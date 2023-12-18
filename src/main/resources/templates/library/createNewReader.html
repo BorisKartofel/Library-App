@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <title>Add new reader</title>
+</head>
+<body>
+
+<form   th:method="POST" th:action="@{/library/readers/new}" th:object="${newReader}">
+    <label for="readerName">Enter name: </label>
+    <input type="text" th:field="*{fullName}" id="readerName"/>
+    <p style="color:red" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Error</p>
+    <br/>
+    <label for="year">Enter year: </label>
+    <input type="number" th:field="*{yearOfBirth}" id="year"/>
+    <p style="color:red" th:if="${#fields.hasErrors('yearOfBirth')}" th:errors="*{yearOfBirth}">Error</p>
+    <br/>
+    <input type="submit" value="Create!">
+</form>
+
+</body>
+</html>

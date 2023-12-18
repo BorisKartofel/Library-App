@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Reader</title>
+</head>
+<body>
+
+<p><b th:text="${reader.get().getFullName()} + ',  ' + ${reader.get().getYearOfBirth()}">READER_NAME</b>
+</p>
+<br>
+<form th:method="DELETE" th:action="@{/library/readers/{readerID}/delete(readerID=${reader.get().getId()})}">
+    <input type="submit" value="Delete this reader">
+</form>
+
+</body>
+</html>

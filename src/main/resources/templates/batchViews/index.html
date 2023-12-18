@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Вставка в БД</title>
+</head>
+<body>
+
+<form th:method="GET" th:action="@{test-batch-update/without-batch}">
+  <input type="submit" value="Multiple DB Insert"/>
+</form>
+
+<form th:method="GET" th:action="@{test-batch-update/with-batch}">
+  <input type="submit" value="DB Batch Update"/>
+</form>
+
+</body>
+</html>

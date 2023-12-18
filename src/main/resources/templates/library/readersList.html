@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Readers</title>
+</head>
+<body>
+
+    <a href="/library/readers/create">Add new reader</a>
+    <hr>
+    <div th:each="libraryReader: ${allReaders}">
+        <a th:href="@{/library/readers/{id}(id=${libraryReader.getId})}"
+           th:text="${libraryReader.getFullName()} + ', ' + ${libraryReader.getYearOfBirth()}">VALUE</a>
+    </div>
+    <br>
+    <a href="/library">Main page</a>
+
+
+</body>
+</html>

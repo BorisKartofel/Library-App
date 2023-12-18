@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Library</title>
+</head>
+<body>
+
+    <form th:method="GET" th:action="@{/library/books}">
+        <input type="submit" value="Books"/>
+    </form>
+    <br>
+    <form th:method="GET" th:action="@{/library/readers}">
+        <input type="submit" value="Readers"/>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+</head>
+<body>
+
+    <a href="/library/books/create">Add new book</a>
+    <br>
+    <br>
+    <form th:method="GET" th:action="@{/library/books/all}">
+        <label for="showBooks">Do you wish to view all books in the library?</label>
+        <input id="showBooks" type="submit" value="Show"/>
+    </form>
+
+</body>
+</html>

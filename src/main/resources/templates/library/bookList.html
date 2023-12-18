@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
+<head>
+    <meta charset="UTF-8">
+    <title>List of all books</title>
+</head>
+<body>
+
+    <div th:each="book: ${allBooks}">
+        <a th:href="@{/library/books/{id}(id=${book.getId()})}"
+            th:text="${book.getTitle()} + ',  ' + ${book.getAuthor()} + ',  ' + ${book.getYear()}">VALUE</a>
+    </div>
+
+</body>
+</html>
