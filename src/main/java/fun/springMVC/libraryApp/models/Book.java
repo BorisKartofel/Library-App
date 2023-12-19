@@ -8,11 +8,11 @@ public class Book {
     private int id;
 
     @NotBlank(message = "Title can not be empty")
-    @Size(min = 1, max = 40, message = "Title is too large")
+    @Size(max = 40, message = "Title is too large")
     private String title;
 
     @NotBlank(message = "Author can not be empty")
-    @Size(min = 1, max = 20, message = "Author name is too large")
+    @Size(max = 20, message = "Author name is too large")
     private String author;
 
     @NotNull(message = "Field can NOT be empty")
