@@ -1,8 +1,9 @@
 package fun.springMVC.libraryApp.models;
 
-import jakarta.validation.constraints.*;
+import javax.validation.constraints.*;
 
 public class LibraryReader {
+
     private int id;
 
     @NotBlank(message = "Full name can NOT be empty. Full name should be in format: 'Surname Name Patronymic'")

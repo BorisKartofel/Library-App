@@ -1,7 +1,7 @@
 package fun.springMVC.libraryApp.models;
 
-import jakarta.validation.constraints.*;
 
+import javax.validation.constraints.*;
 
 public class Book {
 

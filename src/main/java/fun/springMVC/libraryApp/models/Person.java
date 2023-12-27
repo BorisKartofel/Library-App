@@ -1,34 +1,38 @@
 package fun.springMVC.libraryApp.models;
 
-import jakarta.validation.constraints.*;
+import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
+@Entity
+@Table(name = "Person")
 public class Person {
-
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotBlank(message = "This field is not valid")
-    @Size(min = 2, max = 15, message = "Name size must be from to 15 letters")
-    private String name;
+    @Column(name = "username")
+    @NotEmpty(message = "Пустое имя")
+    @Size(min = 2, max = 50, message = "Длина имени долна быть от 2 до 50 символов")
+    private String username;
 
-    @Positive(message = "Age should not be less than 0")
-    private int age;
+    @Column(name = "year_of_birth")
+    @Min(value = 1900, message = "Год рождения должен быть больше 1900")
+    private int yearOfBirth;
 
-    @NotEmpty(message = "Email could not be empty")
-    @Email(message = "Email is not valid. Check it out and try again")
-    private String email;
+    @Column(name = "password")
+    private String password;
 
-    //Страна, Город, индекс 6 цифр
-    @Pattern(regexp = "[A-Z]\\w+, [A-Z]\\w+, \\d{6}", message = "Your address should be in format: Country, City, index (6 digits)")
-    private String address;
+    @Column(name = "role")
+    private String role;
 
+    public Person() {}
 
-    public Person(){}
-
-    public Person(int id, String name, int age, String email){
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.email = email;
+    public Person(String username, int yearOfBirth) {
+        this.username = username;
+        this.yearOfBirth = yearOfBirth;
     }
 
     public int getId() {
@@ -39,35 +43,41 @@ public class Person {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getEmail() {
-        return email;
+    public int getYearOfBirth() {
+        return yearOfBirth;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setYearOfBirth(int yearOfBirth) {
+        this.yearOfBirth = yearOfBirth;
     }
 
-    public int getAge() {
-        return age;
+    public String getPassword() {
+        return password;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getAddress() {
-        return address;
+    @Override
+    public String toString(){
+        return String.format("Person{ id=%d , username=%s , yearOfBirth=%d , password=%s}",
+                id, username, yearOfBirth, password);
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
