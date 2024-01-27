@@ -3,16 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Books</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding-top: 20px;
+        }
+        a {
+            text-decoration: none;
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        a:hover {
+            background-color: #45a049;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
 
-    <a href="/library/books/create">Add new book</a>
-    <br>
-    <br>
-    <form th:method="GET" th:action="@{/library/books/all}">
-        <label for="showBooks">Do you wish to view all books in the library?</label>
-        <input id="showBooks" type="submit" value="Show"/>
-    </form>
+<a href="/library/books/create">Add new book</a>
+<br>
+<br>
+<form th:method="GET" th:action="@{/library/books/all}">
+    <label for="showBooks">Do you wish to view all books in the library?</label>
+    <input id="showBooks" type="submit" value="Show"/>
+</form>
 
 </body>
 </html>

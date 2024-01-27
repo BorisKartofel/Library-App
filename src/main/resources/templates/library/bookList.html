@@ -1,15 +1,39 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>List of all books</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding-top: 20px;
+        }
+        div {
+            margin: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+            display: block;
+            margin-bottom: 5px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
 
-    <div th:each="book: ${allBooks}">
-        <a th:href="@{/library/books/{id}(id=${book.getId()})}"
-            th:text="${book.getTitle()} + ',  ' + ${book.getAuthor()} + ',  ' + ${book.getYear()}">VALUE</a>
-    </div>
+<div th:each="book: ${allBooks}">
+    <a th:href="@{/library/books/{id}(id=${book.getId()})}"
+       th:text="${book.getTitle()} + ',  ' + ${book.getAuthor()} + ',  ' + ${book.getYear()}">VALUE</a>
+</div>
 
 </body>
 </html>

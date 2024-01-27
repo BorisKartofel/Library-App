@@ -3,6 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>Login page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding-top: 100px;
+        }
+        form {
+            background-color: #fff;
+            display: inline-block;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+        a {
+            text-decoration: none;
+            color: #4caf50;
+        }
+    </style>
 </head>
 <body>
 
@@ -17,8 +66,8 @@
     <br/>
     <input type="submit" value="Войти" />
 
-    <div th:if="${param.error}" style="color: red">
-      Неправильные имя и(или) пароль
+    <div th:if="${param.error}" class="error-message">
+        Неправильные имя и(или) пароль
     </div>
 </form>
 

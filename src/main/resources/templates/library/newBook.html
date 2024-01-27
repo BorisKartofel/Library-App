@@ -3,21 +3,66 @@
 <head>
     <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
     <title>New</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding-top: 20px;
+        }
+        form {
+            background-color: #fff;
+            display: inline-block;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        p {
+            color: red;
+            margin-top: 5px;
+        }
+    </style>
 </head>
 <body>
 
-<form   th:method="POST" th:action="@{/library/books/new}" th:object="${newBook}">
-    <label for="bookTitle">Enter title: </label>
+<form th:method="POST" th:action="@{/library/books/new}" th:object="${newBook}">
+    <label for="bookTitle">Enter title:</label>
     <input type="text" th:field="*{title}" id="bookTitle"/>
-    <p style="color:red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Error</p>
+    <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Error</p>
     <br/>
-    <label for="bookAuthor">Enter author: </label>
+    <label for="bookAuthor">Enter author:</label>
     <input type="text" th:field="*{author}" id="bookAuthor"/>
-    <p style="color:red" th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Error</p>
+    <p th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Error</p>
     <br/>
-    <label for="year">Enter year: </label>
+    <label for="year">Enter year:</label>
     <input type="number" th:field="*{year}" id="year"/>
-    <p style="color:red" th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Error</p>
+    <p th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Error</p>
     <br/>
     <input type="submit" value="Create!">
 </form>

@@ -3,18 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Readers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding-top: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        a:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+        hr {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
 
-    <a href="/library/readers/create">Add new reader</a>
-    <hr>
-    <div th:each="libraryReader: ${allReaders}">
-        <a th:href="@{/library/readers/{id}(id=${libraryReader.getId})}"
-           th:text="${libraryReader.getFullName()} + ', ' + ${libraryReader.getYearOfBirth()}">VALUE</a>
-    </div>
-    <br>
-    <a href="/library">Main page</a>
-
+<a href="/library/readers/create">Add new reader</a>
+<hr>
+<div th:each="libraryReader: ${allReaders}">
+    <a th:href="@{/library/readers/{id}(id=${libraryReader.getId})}"
+       th:text="${libraryReader.getFullName()} + ', ' + ${libraryReader.getYearOfBirth()}"></a>
+</div>
+<br>
+<a href="/library">Main page</a>
 
 </body>
 </html>

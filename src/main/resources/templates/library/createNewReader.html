@@ -3,17 +3,62 @@
 <head>
     <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
     <title>Add new reader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding-top: 20px;
+        }
+        form {
+            background-color: #fff;
+            display: inline-block;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        p {
+            color: red;
+            margin-top: 5px;
+        }
+    </style>
 </head>
 <body>
 
-<form   th:method="POST" th:action="@{/library/readers/new}" th:object="${newReader}">
-    <label for="readerName">Enter name: </label>
+<form th:method="POST" th:action="@{/library/readers/new}" th:object="${newReader}">
+    <label for="readerName">Enter name:</label>
     <input type="text" th:field="*{fullName}" id="readerName"/>
-    <p style="color:red" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Error</p>
+    <p th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Error</p>
     <br/>
-    <label for="year">Enter year: </label>
+    <label for="year">Enter year:</label>
     <input type="number" th:field="*{yearOfBirth}" id="year"/>
-    <p style="color:red" th:if="${#fields.hasErrors('yearOfBirth')}" th:errors="*{yearOfBirth}">Error</p>
+    <p th:if="${#fields.hasErrors('yearOfBirth')}" th:errors="*{yearOfBirth}">Error</p>
     <br/>
     <input type="submit" value="Create!">
 </form>

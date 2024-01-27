@@ -3,42 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <title>Book</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding-top: 20px;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        b {
+            background-color: #007bff;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        form {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            flex: 0 0 100%;
+        }
+        select {
+            padding: 5px;
+            border-radius: 3px;
+            margin-right: 10px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        input[type="submit"].delete-button {
+            background-color: #ff3333;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+            display: block;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
 
-    <p><b th:text="${book.get().getTitle()} + ',  ' + ${book.get().getAuthor()} + ',  '
-    + ${book.get().getYear()}">BOOK_NAME</b>
-    </p>
+<p><b th:text="${book.get().getTitle()} + ',  ' + ${book.get().getAuthor()} + ',  '
++ ${book.get().getYear()}">BOOK_NAME</b>
+</p>
 
-    <p>
-        <span th:if="${bookReader.isPresent()}"
-              th:text="'Book is currenty being read by ' + ${bookReader.get().getFullName()}">Current book's reader</span>
+<p>
+    <span th:if="${bookReader.isPresent()}"
+          th:text="'Book is currently being read by ' + ${bookReader.get().getFullName()}">Current book's reader</span>
 
-        <span th:unless="${bookReader.isPresent()}">Book is NOT been read by anyone</span>
-    </p>
+    <span th:unless="${bookReader.isPresent()}">Book is NOT been read by anyone</span>
+</p>
 
-    <form th:method="PATCH" th:action="@{/library/books/{bookID}/appoint(bookID=${book.get().getId()})}">
-        <label for="appointingBookToSomeone">Do you want to appoint current book to any reader?</label>
-        <select th:object="${reader}" th:field="*{id}" id="appointingBookToSomeone">
-            <option th:each="reader : ${readers}" th:value="${reader.getId()}"
-                    th:text="${reader.getFullName()}"></option>
-        </select>
+<form th:method="PATCH" th:action="@{/library/books/{bookID}/appoint(bookID=${book.get().getId()})}">
+    <label for="appointingBookToSomeone">Do you want to appoint current book to any reader?</label>
+    <select th:object="${reader}" th:field="*{id}" id="appointingBookToSomeone">
+        <option th:each="reader : ${readers}" th:value="${reader.getId()}"
+                th:text="${reader.getFullName()}"></option>
+    </select>
 
-        <input type="submit" value="Appoint"/>
-    </form>
+    <input type="submit" value="Appoint"/>
+</form>
 
-    <form th:method="PATCH" th:action="@{/library/books/{bookID}/return(bookID=${book.get().getId()})}">
-        <label for="returning">Or do you want to return this reader's book to the library</label>
-        <input id="returning" type="submit" value="Return"/>
-    </form>
-    <br>
+<form th:method="PATCH" th:action="@{/library/books/{bookID}/return(bookID=${book.get().getId()})}">
+    <label for="returning">Or do you want to return this reader's book to the library</label>
+    <input id="returning" type="submit" value="Return"/>
+</form>
+<br>
 
-    <form th:method="DELETE" th:action="@{/library/books/{bookID}/delete(bookID=${book.get().getId()})}">
-        <input type="submit" value="Delete this book">
-    </form>
+<form th:method="DELETE" th:action="@{/library/books/{bookID}/delete(bookID=${book.get().getId()})}">
+    <input type="submit" class="delete-button" value="Delete this book">
+</form>
 
-    <br>
-    <a href="/library">Main page</a>
+<br>
+<a href="/library">Main page</a>
 
 </body>
 </html>
