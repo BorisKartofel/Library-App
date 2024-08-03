@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // Конфгурируем сам Spring Security
         // Конфигурируем авторизацию
         http.authorizeRequests()
-                .antMatchers("/auth/login", "/auth/registration", "/error").permitAll()
+                .antMatchers("/auth/login", "/auth/registration", "/error", "/actuator/**").permitAll()
                 .anyRequest().hasAnyRole("VISITOR", "ADMIN")
                 .and()
                 .formLogin()
