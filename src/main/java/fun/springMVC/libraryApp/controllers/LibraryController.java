@@ -131,10 +131,4 @@ public class LibraryController {
         return "redirect:/library/readers";
     }
 
-
-
-
-    //TODO: Borrow book and Return book
-
-
 }
